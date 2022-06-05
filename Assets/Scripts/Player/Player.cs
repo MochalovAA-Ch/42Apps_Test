@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     CharacterController charController;
 
     public float Speed;
+    public RangedWeapon weapon;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +18,8 @@ public class Player : MonoBehaviour
     void Update()
     {
         Move();
+        if ( Input.GetKeyDown( KeyCode.Mouse0 ) )
+            weapon.Shoot();
     }
 
     private void Move()

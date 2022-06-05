@@ -23,7 +23,6 @@ public class MouseLook : MonoBehaviour
     void Update()
     {
         Rotate();
-        CheckEnenmyInSight();
     }
 
 
@@ -37,20 +36,6 @@ public class MouseLook : MonoBehaviour
         xRotation = Mathf.Clamp( xRotation, -90f, 90f );
         transform.localRotation = Quaternion.Euler( xRotation, 0.0f, 0.0f );
         playerBody.Rotate( Vector3.up * mouseX );
-    }
-
-
-    void CheckEnenmyInSight()
-    {
-        Ray ray = new Ray( transform.position, transform.forward );
-        RaycastHit raycastHit;
-        if( Physics.Raycast( ray, out raycastHit ) )
-        {
-            Enemy enemy = raycastHit.transform.GetComponent<Enemy>();
-            if ( enemy != null )
-                enemy.SetTargetMaterial();
-            //Debug.Log( "rayCastHit" + raycastHit );
-        }
     }
 
     private void LateUpdate()

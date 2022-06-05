@@ -7,12 +7,16 @@ public class Enemy : MonoBehaviour
     public Material defaultMaterial;
     public Material targetedMaterial;
 
-    MeshRenderer renderer;
+    Player player;
+
+    MeshRenderer meshRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
-        renderer = GetComponent<MeshRenderer>();
+        meshRenderer = GetComponent<MeshRenderer>();
+        player = FindObjectOfType<Player>();
+        Debug.Log( player );
     }
 
     // Update is called once per frame
@@ -23,11 +27,11 @@ public class Enemy : MonoBehaviour
 
     public void SetTargetMaterial()
     {
-        renderer.material = targetedMaterial;
+        meshRenderer.material = targetedMaterial;
     }
 
     public void SetDefaulMaterial()
     {
-        renderer.material = defaultMaterial;
+        meshRenderer.material = defaultMaterial;
     }
 }
