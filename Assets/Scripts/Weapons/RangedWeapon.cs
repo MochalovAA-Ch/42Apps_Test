@@ -31,6 +31,7 @@ public class RangedWeapon : MonoBehaviour
             GameObject gameObject = bulletPooler.SpawnObject( transform.position + transform.forward + offset, transform.rotation );
             Bullet bullet = gameObject.GetComponent<Bullet>();
             bullet.Speed = BulletSpeed;
+            bullet.IsPlayerBullet = IsPlayerWeapon;
             Debug.Log( "Выстрел из оружия от " + this.transform.parent );
         }
     }

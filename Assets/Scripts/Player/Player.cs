@@ -38,7 +38,7 @@ public class Player : MonoBehaviour, IHitable
 
     public void OnHit( bool IsPlayerBullet)
     {
-        if ( !IsPlayerBullet ) return;
+        if ( IsPlayerBullet ) return;
 
         offset = -transform.forward;
     }

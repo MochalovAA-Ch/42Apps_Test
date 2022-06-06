@@ -199,6 +199,10 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4357808275333619412, guid: 4cd02952fc3edb84fa0c7263e6d6ebf6, type: 3}
+      propertyPath: IsPlayerWeapon
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4357808275333619412, guid: 4cd02952fc3edb84fa0c7263e6d6ebf6, type: 3}
       propertyPath: DelayBeetwenShoot
       value: 1
       objectReference: {fileID: 0}

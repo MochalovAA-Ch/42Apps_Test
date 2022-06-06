@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour, IHitable
         meshRenderer = GetComponent<MeshRenderer>();
         playerTr = FindObjectOfType<Player>().transform;
         characterController = GetComponent<CharacterController>();
-        ChangeMoveMode();
+        moveMode = MoveMode.Stay;//ChangeMoveMode();
     }
 
     // Update is called once per frame
@@ -79,7 +79,7 @@ public class Enemy : MonoBehaviour, IHitable
         if ( moveMode == MoveMode.Right )
             dir = transform.right;
 
-        if ( !CheckGround( dir ) )
+        if ( moveMode == MoveMode.Stay || !CheckGround( dir ) )
         {
             switchMoveModeTimer += Time.deltaTime;
             if( switchMoveModeTimer >= swithcMoveModeTime )
@@ -90,6 +90,8 @@ public class Enemy : MonoBehaviour, IHitable
 
             dir = Vector3.zero;
         }
+
+        
             
 
         characterController.Move( ( dir * Speed - Vector3.up * 9.8f ) * Time.deltaTime );
@@ -112,7 +114,7 @@ public class Enemy : MonoBehaviour, IHitable
 
     public void OnHit( bool IsPlayerBullet )
     {
-        if ( IsPlayerBullet ) return;
+        if ( !IsPlayerBullet ) return;
 
         Debug.Log( "Попали в агента " + gameObject );
         gameObject.SetActive( false ); 
