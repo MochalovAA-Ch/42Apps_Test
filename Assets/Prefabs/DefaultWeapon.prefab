@@ -99,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DelayBeetwenShoot: 0.1
   bulletPooler: {fileID: 4357808275333619413}
+  BulletSpeed: 0
 --- !u!114 &4357808275333619413
 MonoBehaviour:
   m_ObjectHideFlags: 0

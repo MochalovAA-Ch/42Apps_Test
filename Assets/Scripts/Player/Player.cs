@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IHitable
 {
-    CharacterController charController;
-
     public float Speed;
     public RangedWeapon weapon;
+
+    CharacterController charController;
+    Vector3 offset;
+
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         charController = GetComponent<CharacterController>();
     }
 
@@ -19,7 +22,7 @@ public class Player : MonoBehaviour
     {
         Move();
         if ( Input.GetKeyDown( KeyCode.Mouse0 ) )
-            weapon.Shoot();
+            weapon.Shoot( Vector3.zero );
     }
 
     private void Move()
@@ -27,9 +30,19 @@ public class Player : MonoBehaviour
         float x = Input.GetAxis( "Horizontal" );
         float y = Input.GetAxis( "Vertical" );
 
-        Vector3 moveHorizontal = transform.right * x + transform.forward * y;
+        Vector3 moveHorizontal = transform.right * x + transform.forward * y + offset;
+        offset = Vector3.Lerp( offset, Vector3.zero, Time.deltaTime * 10);
+        
+
 
         charController.Move( ( moveHorizontal * Speed - Vector3.up*9.8f ) * Time.deltaTime );
+
+    }
+
+    public void OnHit()
+    {
+        offset = -transform.forward;
+
 
     }
 
