@@ -13,8 +13,8 @@ public class Player : MonoBehaviour, IHitable
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
         charController = GetComponent<CharacterController>();
+        Debug.Log( "Старт игры" );
     }
 
     // Update is called once per frame
@@ -32,18 +32,15 @@ public class Player : MonoBehaviour, IHitable
 
         Vector3 moveHorizontal = transform.right * x + transform.forward * y + offset;
         offset = Vector3.Lerp( offset, Vector3.zero, Time.deltaTime * 10);
-        
-
 
         charController.Move( ( moveHorizontal * Speed - Vector3.up*9.8f ) * Time.deltaTime );
-
     }
 
-    public void OnHit()
+    public void OnHit( bool IsPlayerBullet)
     {
+        if ( !IsPlayerBullet ) return;
+
         offset = -transform.forward;
-
-
     }
 
 }

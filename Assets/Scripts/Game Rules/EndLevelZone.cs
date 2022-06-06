@@ -23,11 +23,11 @@ public class EndLevelZone : MonoBehaviour
     private void OnTriggerEnter( Collider other )
     {
         if ( IsEndLevel ) return;
-
         
         if ( other.GetComponent<Player>() != null )
         {
             IsEndLevel = true;
+            Debug.Log( Message );
             StartCoroutine( EndLevel( Message ) );
         }
     }

@@ -12,9 +12,7 @@ public class ObjectPooler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //poolDictionary = new Queue<GameObject>();
         Init();
-
     }
 
     private void Init()
@@ -49,12 +47,5 @@ public class ObjectPooler : MonoBehaviour
         GameObject gameObject = Instantiate( prefab );
         gameObject.SetActive( false );
         poolDictionary.Enqueue( gameObject );
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

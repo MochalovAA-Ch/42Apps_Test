@@ -6,12 +6,6 @@ public class PlayerScope : MonoBehaviour
 {
     Collider previousTarget;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -28,30 +22,22 @@ public class PlayerScope : MonoBehaviour
 
     private void ProcessCollision( Collider currentTarget )
     {
-        // No collision this frame.
         if ( currentTarget == null )
         {
-            // But there was an object hit last frame.
             if ( previousTarget != null )
             {
                 OnRayExit( previousTarget );
             }
         }
-
-        // The object is the same as last frame.
         else if ( previousTarget == currentTarget )
         {
-            //DoEvent( OnRayStay, currentTarget );
+            //Аналог OnStay event
         }
-
-        // The object is different than last frame.
         else if ( previousTarget != null )
         {
             OnRayExit( previousTarget );
             OnRayEnter( currentTarget );
         }
-
-        // There was no object hit last frame.
         else
         {
             OnRayEnter( currentTarget );

@@ -9,6 +9,7 @@ public class RangedWeapon : MonoBehaviour
     public ObjectPooler bulletPooler;
     public float BulletSpeed;
 
+    public bool IsPlayerWeapon = false;
 
     // Start is called before the first frame update
     void Start()
@@ -20,21 +21,17 @@ public class RangedWeapon : MonoBehaviour
     void Update()
     {
         delayBeetwenShoot += Time.deltaTime;
-        /*if ( Input.GetKeyDown( KeyCode.Mouse0 ) )
-            Shoot();*/
-
     }
 
     public void Shoot( Vector3 offset )
     {
         if ( delayBeetwenShoot >= DelayBeetwenShoot )
         {
-            /*if ( Input.GetKeyDown( KeyCode.Mouse0 ) )
-                Shoot();*/
             delayBeetwenShoot = 0.0f;
             GameObject gameObject = bulletPooler.SpawnObject( transform.position + transform.forward + offset, transform.rotation );
             Bullet bullet = gameObject.GetComponent<Bullet>();
             bullet.Speed = BulletSpeed;
+            Debug.Log( "Выстрел из оружия от " + this.transform.parent );
         }
     }
 
@@ -42,5 +39,4 @@ public class RangedWeapon : MonoBehaviour
     {
         transform.LookAt( target );
     }
-
 }

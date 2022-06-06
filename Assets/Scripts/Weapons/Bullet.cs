@@ -7,15 +7,11 @@ public class Bullet : MonoBehaviour, ISpawnableObject
     public float LifeTime;
     public float Speed;
     public ParticleSystem hitEffect;
+    public bool IsPlayerBullet = false;
 
     MeshRenderer meshRender;
     bool wasHit = false;
     float lifeTime;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -44,11 +40,6 @@ public class Bullet : MonoBehaviour, ISpawnableObject
         meshRender.enabled = true;
     }
 
-    private void OnDisable()
-    {
-
-    }
-
     IEnumerator DisableObjectCourutine()
     {
         wasHit = true;
@@ -59,11 +50,6 @@ public class Bullet : MonoBehaviour, ISpawnableObject
         gameObject.SetActive( false );
     }
 
-    public void OnCollisionEnter( Collision collision )
-    {
-        //Debug.Log( collision );
-    }
-
     private void OnTriggerEnter( Collider other )
     {
         if ( other.isTrigger ) return;    //Не берем в расчет другие тригеры
@@ -71,10 +57,9 @@ public class Bullet : MonoBehaviour, ISpawnableObject
         IHitable hitable = other.GetComponent<IHitable>();
         if( hitable != null )
         {
-            hitable.OnHit();
+            hitable.OnHit( IsPlayerBullet );
         }
 
         StartCoroutine( DisableObjectCourutine() );
-        //Debug.Log( other );
     }
 }

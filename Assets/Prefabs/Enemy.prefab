@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4505043398754799952}
   - component: {fileID: 4505043398754799953}
   - component: {fileID: 4505043398754799954}
-  - component: {fileID: 4505043398754799955}
   - component: {fileID: 4505043398754799959}
   - component: {fileID: 1006343206921880775}
+  - component: {fileID: 5471875256382693349}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -87,20 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &4505043398754799955
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4505043398754799964}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4505043398754799959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,9 +117,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cafc3e8567485b4a908d6675323a95a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 5
   defaultMaterial: {fileID: 2100000, guid: 3e72ce30636522c4c947e4ab3cac1de7, type: 2}
   targetedMaterial: {fileID: 2100000, guid: afc454b90d55c5c40a38c98f0f50d765, type: 2}
   rangedWeapon: {fileID: 5688368578026554299}
+--- !u!143 &5471875256382693349
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4505043398754799964}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &8253741993767787887
 PrefabInstance:
   m_ObjectHideFlags: 0
